@@ -125,3 +125,9 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[user]
+	email = yaro@mail.ru
+	name = Yaro
