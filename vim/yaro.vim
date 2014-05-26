@@ -39,7 +39,7 @@ call togglebg#map("")
 
 " Functions ===================================
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
-function ToggleWrap()
+function! ToggleWrap()
   if &wrap
     echo "Wrap OFF"
     setlocal nowrap list
@@ -68,5 +68,46 @@ function ToggleWrap()
   endif
 endfunction
 
-nmap <C-N> :NERDTreeToggle<CR>
-map ,rs :wa<CR>:!clear;rspec --color %<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+"map ,rs :wa<CR>:!clear;rspec --color %<CR>
+map <Leader>rt :w<CR>:call RunCurrentSpecFile()<CR>
+map <Leader>rs :w<CR>:call RunNearestSpec()<CR>
+map <Leader>rl :w<CR>:call RunLastSpec()<CR>
+map <Leader>ra :w<CR>:call RunAllSpecs()<CR>
+
+noremap n nzz
+noremap N Nzz
+
+nnoremap <C-X> <C-a>
+
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_load_gemfile = 1
+
+"turn on regex syntax for searches
+noremap / /\v
+
+function! EditYaroVimrc()
+  normal :tabe /home/yaro/.yadr/vim/yaro.vim
+endfunction
+command! Vy call EditYaroVimrc() 
+
+function! ReloadYaroVimrc()
+  normal :so /home/yaro/.yadr/vim/yaro.vim
+endfunction
+command! Vr call ReloadYaroVimrc()
+
+function! InsertTabWrapper()
+  let col = col(".") - 1
+  if !col || getline(".")[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-n>"
+  endif
+endfunction
+
+inoremap <Tab> <C-r>=InsertTabWrapper()<cr>
+imap <S-Tab> <C-p>
+
+imap <C-j> <Plug>snipMateNextOrTrigger
