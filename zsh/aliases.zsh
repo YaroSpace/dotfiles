@@ -20,8 +20,8 @@ alias cdb='cd -'
 
 # Show human friendly numbers and colors
 alias df='df -h'
-alias ll='ls -alGh'
-alias ls='ls -Gh'
+alias ll='ls -alGh --color'
+alias ls='ls -Gh --color'
 alias du='du -h -d 2'
 
 # show me files matching "ls grep"
@@ -163,5 +163,14 @@ alias go_light='MC_SKIN=sand256;echo -e "\033]50;SetProfile=Light\a"'
 alias ssh_yaro='ssh yaro@yaro-u -t tmux attach'
 alias ssh_nas='ssh root@nas -t tmux attach'
 alias tmux='tmux has-session && exec tmux attach || exec tmux'
-alias go_d='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#839496";gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#002b36";gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#93a1a1"'
-alias go_l='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#657b83";gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#fdf6e3";gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#eee8d5"'
+alias go_d='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#839496";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#002b36";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#93a1a1";
+            gconftool-2 --set "/apps/guake/style/font/color" --type string "#839496";
+            gconftool-2 --set "/apps/guake/style/background/color" --type string "#002b36"'
+alias go_l='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#657b83";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#fdf6e3";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#eee8d5"
+            gconftool-2 --set "/apps/guake/style/font/color" --type string "#657b83";
+            gconftool-2 --set "/apps/guake/style/background/color" --type string "#fdf6e3"'
+alias gl='cd ..;cd -'

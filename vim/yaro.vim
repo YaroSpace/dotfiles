@@ -68,12 +68,16 @@ function! ToggleWrap()
   endif
 endfunction
 
-nmap <C-n> :NERDTreeToggle<CR>
 "map ,rs :wa<CR>:!clear;rspec --color %<CR>
 map <Leader>rt :w<CR>:call RunCurrentSpecFile()<CR>
 map <Leader>rs :w<CR>:call RunNearestSpec()<CR>
 map <Leader>rl :w<CR>:call RunLastSpec()<CR>
 map <Leader>ra :w<CR>:call RunAllSpecs()<CR>
+
+function! RunCurrentCucumberSpec()
+  normal :!zeus cucumber %
+endfunction
+map <Leader>rc :w<CR>:call RunCurrentCucumberSpec()<CR>
 
 noremap n nzz
 noremap N Nzz
@@ -111,3 +115,4 @@ inoremap <Tab> <C-r>=InsertTabWrapper()<cr>
 imap <S-Tab> <C-p>
 
 imap <C-j> <Plug>snipMateNextOrTrigger
+nnoremap <C-n> :NERDTreeToggle<CR>
