@@ -46,3 +46,4 @@ export PATH="home/yaro/bin:/usr/share/jdk/jdk1.7.0_45/bin:$PATH"
 [ -f /home/yaro/.travis/travis.sh ] && source /home/yaro/.travis/travis.sh
 export TMUX_TMPDIR='/tmp/tmux-1000'
 eval `dircolors ~/.dircolors`
+[ -s "/home/yaro/.nvm/nvm.sh" ] && . "/home/yaro/.nvm/nvm.sh" # This loads nvm

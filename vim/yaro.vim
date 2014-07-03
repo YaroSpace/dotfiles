@@ -16,8 +16,8 @@ set relativenumber
 " set cc=80
 
 set winwidth=84
-set winheight=5
-set winminheight=5
+set winheight=10
+set winminheight=10
 set winheight=999
 
 noremap <Left> <nop>
@@ -29,7 +29,7 @@ noremap <Down> <nop>
 
 colorscheme solarized
 let hour = strftime("%H")
-if 6 <= hour && hour < 18
+if 6 <= hour && hour < 20
   set background=light
 else
   set background=dark
@@ -77,7 +77,8 @@ map <Leader>ra :w<CR>:call RunAllSpecs()<CR>
 function! RunCurrentCucumberSpec()
   normal :!zeus cucumber %
 endfunction
-map <Leader>rc :w<CR>:call RunCurrentCucumberSpec()<CR>
+" map <Leader>rc :w<CR>:call RunCurrentCucumberSpec()<CR>
+map <Leader>rc :w<CR>:!zeus cucumber -r features %<CR>
 
 noremap n nzz
 noremap N Nzz
@@ -111,8 +112,30 @@ function! InsertTabWrapper()
   endif
 endfunction
 
-inoremap <Tab> <C-r>=InsertTabWrapper()<cr>
-imap <S-Tab> <C-p>
+" inoremap <Tab> <C-r>=InsertTabWrapper()<cr>
+" imap <S-Tab> <C-p>
 
 imap <C-j> <Plug>snipMateNextOrTrigger
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeFind<CR>
+
+nmap <Leader>gs :Gstatus<CR><C-w>20+
+let g:syntastic_enable_highlighting = 1
+let NERDTreeQuitOnOpen=1
+
+set mouse+=a
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
+endif
+
+" set wildignore+=*/tmp/*,*/yaro/*
+" let g:ctrlp_custom_ignore = '\v^tmp\/$'
+"
+let g:syntastic_check_on_open=1
+autocmd FileType javascript,css nmap <silent> ,; :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css inoremap <silent> ,; <ESC>:call cosco#commaOrSemiColon()<CR>a
+imap <C-c> ,;<CR><Esc>O
+
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+let &completefunc = 'youcompleteme#Complete'
+let g:ragtag_global_maps = 1

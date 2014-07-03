@@ -157,7 +157,7 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 
 # Yaro's aliases
 alias mount_yaro='sshfs -p 22 yaro@yaro-u:/home/yaro ~/yaro-u -oauto_cache,reconnect,defer_permissions,noappledouble,negative_vncache,volname=Yaro-U,workaround=all'
-alias mount_nas='sudo mount -t nfs nas:/volume1/ ~/nas'
+alias mount_nas='sudo mount -t nfs4 -o proto=tcp,port=2049 nas:/ /media/nas'
 alias go_dark='export MC_SKIN=solarized;echo -e "\033]50;SetProfile=Dark\a"'
 alias go_light='MC_SKIN=sand256;echo -e "\033]50;SetProfile=Light\a"'
 alias ssh_yaro='ssh yaro@yaro-u -t tmux attach'
