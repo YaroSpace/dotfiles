@@ -1,0 +1,43 @@
+# Create splits and vertical splits
+unbind-key v
+unbind-key ^V
+unbind-key s
+unbind-key ^S
+
+# Smart pane switching with awareness of vim splits.
+unbind-key C-h
+unbind-key C-j
+unbind-key C-k
+unbind-key C-l
+
+# allow selecting panes with mouse
+setw -g mouse on
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
+
+# map Vi movement keys as pane movement keys
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Use vi keybindings in copy and choice modes
+setw -g mode-keys vi
+bind [ copy-mode
+bind -t vi-copy v begin-selection
+bind -t vi-copy y copy-selection
+bind -t vi-copy V rectangle-toggle
+bind ] paste-buffer
+
+# Create splits
+bind-key 'c' new-window -c '#{pane_current_path}'
+bind-key '"' split-window -c '#{pane_current_path}'
+bind-key '%' split-window -h -c '#{pane_current_path}'
+
+# new-session
+set-option -g allow-rename off
+bind 's' choose-session
+
+# move x clipboard into tmux paste buffer
+bind C-p run "xclip -o | tmux load-buffer - ; tmux paste-buffer"
+# move tmux copy buffer into x clipboard
+bind C-y run "tmux save-buffer - | xclip -i -selection clipboard"

@@ -208,3 +208,36 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+
+# YARO
+alias ll='ls -alGh --color'
+alias ls='ls -Gh --color'
+alias gl='cd ..;cd -'
+
+alias mount_yaro='sshfs -p 22 yaro@yaro-u:/home/yaro ~/yaro-u -oauto_cache,reconnect,defer_permissions,noappledouble,negative_vncache,volname=Yaro-U,workaround=all'
+alias mount_nas='sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.1.100:/volume1 ~/nas'
+
+alias go_dark='export MC_SKIN=solarized;echo -e "\033]50;SetProfile=Dark\a"'
+alias go_light='MC_SKIN=sand256;echo -e "\033]50;SetProfile=Light\a"'
+alias go_d='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#839496";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#002b36";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#93a1a1";
+            gconftool-2 --set "/apps/guake/style/font/color" --type string "#839496";
+            gconftool-2 --set "/apps/guake/style/background/color" --type string "#002b36"'
+alias go_l='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#657b83";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#fdf6e3";
+            gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#eee8d5"
+            gconftool-2 --set "/apps/guake/style/font/color" --type string "#657b83";
+            gconftool-2 --set "/apps/guake/style/background/color" --type string "#fdf6e3"'
+
+alias ssh_yaro='ssh yaro@yaro-u -t tmux attach'
+alias ssh_nas='ssh admin@nas -t tmux attach'
+
+alias tmux='tmux has-session && exec tmux attach || exec tmux'
+alias proj='~/Projects/start.sh'
+
+alias tmx='~/Projects/start.sh'
+alias eg='vim Gemfile'
+alias gu='bundle exec guard'
+alias gpsu='git push -u origin'
+alias x='tar xvf'
