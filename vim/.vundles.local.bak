@@ -1,6 +1,0 @@
-Bundle "tpope/vim-dispatch"
-Bundle "christoomey/vim-tmux-navigator"
-Bundle "https://github.com/YaroSpace/FixedTaskList.vim.git"
-Bundle "jelera/vim-javascript-syntax"
-Bundle "Valloric/YouCompleteMe"
-Bundle "https://github.com/marijnh/tern_for_vim"

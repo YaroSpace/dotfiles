@@ -34,6 +34,8 @@ if 6 <= hour && hour < 20
 else
   set background=dark
 endif
+
+set background=dark
 " set t_Co=16
 call togglebg#map("")
 
@@ -68,6 +70,8 @@ function! ToggleWrap()
   endif
 endfunction
 
+autocmd BufEnter *.* setlocal nowrap
+
 "map ,rs :wa<CR>:!clear;rspec --color %<CR>
 map <Leader>rt :w<CR>:call RunCurrentSpecFile()<CR>
 map <Leader>rs :w<CR>:call RunNearestSpec()<CR>
@@ -75,10 +79,10 @@ map <Leader>rl :w<CR>:call RunLastSpec()<CR>
 map <Leader>ra :w<CR>:call RunAllSpecs()<CR>
 
 function! RunCurrentCucumberSpec()
-  normal :!zeus cucumber %
+  normal :!cucumber %
 endfunction
 " map <Leader>rc :w<CR>:call RunCurrentCucumberSpec()<CR>
-map <Leader>rc :w<CR>:!zeus cucumber -r features %<CR>
+map <Leader>rc :w<CR>:!cucumber -r features %<CR>
 
 noremap n nzz
 noremap N Nzz
@@ -116,6 +120,8 @@ endfunction
 " imap <S-Tab> <C-p>
 
 imap <C-j> <Plug>snipMateNextOrTrigger
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:yankring_replace_n_nkey = 0
 nnoremap <C-n> :NERDTreeFind<CR>
 
 nmap <Leader>gs :Gstatus<CR><C-w>20+
@@ -137,5 +143,22 @@ autocmd FileType javascript,css inoremap <silent> ,; <ESC>:call cosco#commaOrSem
 imap <C-c> ,;<CR><Esc>O
 
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-let &completefunc = 'youcompleteme#Complete'
+
+" let &completefunc = 'youcompleteme#Complete'
 let g:ragtag_global_maps = 1
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go,groovy' : ['.'],
+  \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }

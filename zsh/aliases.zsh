@@ -88,6 +88,7 @@ alias gtr='grb track'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
 alias gps='git push'
+alias gpsu='git push -u origin'
 alias gpsh='git push'
 alias gnb='git nb' # new branch aka checkout -b
 alias grs='git reset'
@@ -162,7 +163,8 @@ alias go_dark='export MC_SKIN=solarized;echo -e "\033]50;SetProfile=Dark\a"'
 alias go_light='MC_SKIN=sand256;echo -e "\033]50;SetProfile=Light\a"'
 alias ssh_yaro='ssh yaro@yaro-u -t tmux attach'
 alias ssh_nas='ssh root@nas -t tmux attach'
-alias tmux='tmux has-session && exec tmux attach || exec tmux'
+# alias tmux='tmux has-session && exec tmux attach || exec tmux'
+alias tmux='TERM=screen-256color tmux'
 alias go_d='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#839496";
             gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#002b36";
             gconftool-2 --set "/apps/gnome-terminal/profiles/Default/bold_color" --type string "#93a1a1";
@@ -174,3 +176,8 @@ alias go_l='gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_
             gconftool-2 --set "/apps/guake/style/font/color" --type string "#657b83";
             gconftool-2 --set "/apps/guake/style/background/color" --type string "#fdf6e3"'
 alias gl='cd ..;cd -'
+
+# temporary
+
+alias buy='rvm use ruby-2.1.4@buyplan'
+alias e='vim Gemfile'

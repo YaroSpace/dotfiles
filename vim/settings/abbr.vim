@@ -7,3 +7,6 @@ abbr cl! console.log( )<left><left>
 
 " Rspec Before
 abbr rbf before { }<left><left>
+iabbr er expect(it).to receive(:)<left>
+abbr bp binding.pry
+abbr rr ````ruby<Enter><Enter>```<up>
